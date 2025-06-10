@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soil Image Analyzer 🌱</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      background: #f1f8e9;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 6px solid #2e7d32;
+      overflow-x: auto;
+    }
+
+    .result-box h2 {
+      margin-top: 0;
+      color: #33691e;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 16px;
+      line-height: 1.6;
+      font-family: Consolas, monospace;
+      color: #333;
+    }
+
+    .back-button {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-button button {
+      /* background-color: #8d6e63; */
+      float: left;
+      padding: 10px 20px;
+      font-size: 15px;
+    }
+
+    .back-button button:hover {
+      background-color: #19862b;
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      pre {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Soil Image Analyzer</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+      <label for="soil_image">Upload Soil Image:</label>
+      <input type="file" name="soil_image" accept="image/*" required />
+      <button type="submit">Analyze Image</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+      <h2>🧪 Analysis Result</h2>
+      <pre>{{ result | safe}}</pre>
+    </div>
+    {% endif %}
+
+    <div class="back-button">
+      <button onclick="goBack()">← Go Back</button>
+    </div>
+
+    <div class="footer">Built with 💚 using Gemini & LangChain</div>
+  </div>
+  <script>
+    function goBack() {
+      window.location.href = "./";
+    }
+  </script>
+</body>
+</html>
